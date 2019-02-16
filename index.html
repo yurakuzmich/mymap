@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Display a map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+
+#userlist {
+position:absolute;
+top: 0;
+bottom: 0;
+width:100%;
+z-index: 10000;
+background: #fff;
+overflow-y:scroll;
+}
+ 
+#userlist div {
+}
+
+#userlist img {
+}
+
+#buttons {
+position: absolute;
+z-index:10001;
+bottom: 10%;
+width: 100%;
+}
+
+#buttonsdiv {
+margin: 0 auto;
+}
+</style>
+</head>
+<body>
+	<div id="userlist">
+		<h2>Список пользователей</h2>
+	</div>
+	<div id='map'></div>
+	<div id="buttons">
+		<center>
+			<button type="button" class="btn btn-success" id="mapbutton">Карта</button>
+			<button type="button" class="btn btn-success" id="usersbutton">Пользователи</button>
+		</center>
+	</div>
+<script>
+
+</script>
+ 
+ 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+ 
+ <script src='code.js'></script>
+</body>
+</html>
