@@ -37,8 +37,9 @@ if(myRequest.status != 200) {
 } else {
 	for(var i = 0; i <= 100; i++) {
 		//Добавляем пользователя
-		let user='<div class="container"><div class="row"><div class="col"><img src="'+users.features[i].properties.avatar+'" class="rounded" onclick="flyToUser('+users.features[i].geometry.coordinates+')"></div><div class="col"><p class="text-left">' + users.features[i].properties.userName +'</p><p>email: <a href="mailto:'+users.features[i].properties.email+'">'+users.features[i].properties.email+'</a></p><p>homepage: <a href="'+users.features[i].properties.url+'">'+users.features[i].properties.url+'</a></p></div></div></div>';
+		let user='<div class="container"><div class="row"><div class="col"><img src="'+users.features[i].properties.avatar+'" class="rounded" onclick="flyToUser('+users.features[i].geometry.coordinates[0]+','+ users.features[i].geometry.coordinates[1]+')"></div><div class="col"><p class="text-left">' + users.features[i].properties.userName +'</p><p>email: <a href="mailto:'+users.features[i].properties.email+'">'+users.features[i].properties.email+'</a></p><p>homepage: <a href="'+users.features[i].properties.url+'">'+users.features[i].properties.url+'</a></p></div></div></div>';
 		userlist.innerHTML += user + '<br>';
+		console.log(users.features[i].geometry.coordinates[0]);
 		//Добавляем маркер пользователя
 		
 		let usermarker = new mapboxgl.Marker();
@@ -63,9 +64,10 @@ document.getElementById('usersbutton').onclick = function() {
 }
 
 //Функция перехода к маркеру пользователя
-function flyToUser(usercoords) {
+function flyToUser(lng, lat) {
 	document.getElementById('userlist').style.display = 'none';
-	map.flyTo({center: usercoords, zoom:25});
+	//console.log();
+	map.flyTo({center: [lng, lat], zoom:25});
 }
 
 
