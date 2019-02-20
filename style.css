@@ -1,0 +1,72 @@
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+
+#sidebar {
+	width: 30%;
+	min-width: 200px;
+	height: 70%;
+	position: absolute;
+	right: 5px;
+	top: 15%;
+	border-radius: 5px;
+	background: #ffffff;
+	overflow: auto;
+}
+
+	#sidebar h2 {
+		margin: 0 auto 30px auto;
+		padding: 5px;
+		text-align: center;
+		border-bottom: 2px solid #afeeee;
+	}
+
+#userlist {
+
+}
+
+	#userlist div, p {
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.user {
+		clear: both;
+		border: 1px solid #00ff00;
+	}
+	
+	.avatar {
+		float: left;
+		padding: 5px;
+		display: table-cell; 
+		vertical-align: middle;
+	}
+	
+		.avatar img {
+			margin: 10px;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+		}
+	
+	.userinfo {
+		float: left;
+		clear: right;
+	}
+	
+		.userinfo p {
+			margin: 0;
+			padding:  0;
+		}
+ 
+
+
+.marker {
+display: block;
+border: none;
+height: 50px;
+width: 50px;
+border-radius: 50%;
+cursor: pointer;
+padding: 0;
+}

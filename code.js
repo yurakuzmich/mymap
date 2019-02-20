@@ -23,6 +23,7 @@ zoom: 3
 });
 
 
+
 //Пробуем по-людски получить json
 var myRequest = new XMLHttpRequest();
 myRequest.open('GET', '/db', false);
@@ -31,7 +32,29 @@ var result = myRequest.responseText;
 var users = JSON.parse(result);
 
 
+//Новый вывод пользователей
+if(myRequest.status != 200) {
+	console.log('Err. #${myRequest.statusText}');
+} else {
+	users.features.forEach(function callback(currentValue, index, array) {
+		//console.log(currentValue);
+		renderUser(currentValue.properties.avatar, currentValue.properties.userName, 
+		currentValue.properties.email, currentValue.properties.url);
+		
+		
+		let markerdiv = document.createElement('div');
+		markerdiv.className = 'marker';
+		markerdiv.style.background = '#fff url('+currentValue.properties.avatar+') no-repeat center';
+				
+		let usermarker = new mapboxgl.Marker(markerdiv);
+		usermarker.setLngLat(currentValue.geometry.coordinates);
+		usermarker.addTo(map);
+	});
+}
+
+
 //Вывод списка пользователей и добавление маркеров на карту
+/*
 if(myRequest.status != 200) {
 	console.log('Error'+': '+myRequest.statusText);
 } else {
@@ -64,18 +87,26 @@ if(myRequest.status != 200) {
 		//console.log("Добавлен маркер № "+i);
 	}
 }
-
+*/
  
-  
-  
-//Обработчики кнопок переключения вида карта/пользователи
-document.getElementById('mapbutton').onclick = function() {
-      document.getElementById('userlist').style.display = 'none';
-	  //map.flyTo({center:[0, 0], zoom:15});
-}
-
-document.getElementById('usersbutton').onclick = function() {
-      document.getElementById('userlist').style.display = 'block';
+ 
+//Функция отрисовки пользоваеля
+function renderUser(avatar, username, usermail, userurl) {
+	let user = '';
+		user +=  '<div class="user">';
+			user +=  '<div class="avatar">';
+				//Аватарка
+				user += '<img src="'+avatar+'">';
+			user += '</div>'
+			user += '<div class="userinfo">';
+				//Данные юзера
+				user += '<p>'+username+'</p>';
+				user += '<p><a href="mailto:'+usermail+'">'+usermail+'</a></p>';
+				user += '<p><a href="'+userurl+'">'+userurl+'</a></p>';
+			user += '</div>'
+		user +=  '</div>';
+	userlist.innerHTML += user;
+	
 }
 
 //Функция центрирования карты на маркере пользователя
@@ -84,5 +115,7 @@ function flyToUser(lng, lat) {
 	//console.log();
 	map.flyTo({center: [lng, lat], zoom:6});
 }
+
+
 
 
